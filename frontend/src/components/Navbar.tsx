@@ -3,9 +3,8 @@ import { Badge } from './ui/badge'
 import { Separator } from './ui/separator'
 
 const links = [
-  { to: '/ui/', label: 'Home' },
+  { to: '/ui/', label: 'Dashboard' },
   { to: '/ui/logs', label: 'Logs' },
-  { to: '/ui/dashboard', label: 'Dashboard' }
 ]
 
 export default function Navbar() {
