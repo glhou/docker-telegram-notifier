@@ -39,3 +39,11 @@ export async function fetchServices(): Promise<ServicesResponse> {
   if (!res.ok) throw new Error("Failed to fetch services")
   return res.json()
 }
+
+type LoggersResponse = MessageOutput<string[]>
+
+export async function fetchLoggers(service: string): Promise<LoggersResponse> {
+  const res = await fetch(`/api/log/services/${service}/loggers`)
+  if (!res.ok) throw new Error("Failed to fetch loggers")
+  return res.json()
+}

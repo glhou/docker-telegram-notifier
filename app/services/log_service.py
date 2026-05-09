@@ -19,7 +19,8 @@ async def list_available_services(session: AsyncSession) -> Sequence[str]:
 
 
 async def list_available_loggers(session: AsyncSession, service_name) -> Sequence[str]:
-    return await log_repository.list_loggers(session, service_name)
+    loggers = await log_repository.list_loggers(session, service_name)
+    return [logger for logger in loggers if logger != ""]
 
 
 async def save_logs(session: AsyncSession, logs: list[Log]) -> list[Log]:

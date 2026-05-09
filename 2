@@ -62,7 +62,7 @@ export default function Logs() {
       <h2 className="text-lg font-semibold mb-4"> Logs</h2>
       <Card className="p-6">
         <CardHeader>
-          <div className="flex flex-row">
+          <div>
             <Field>
               <FieldLabel>Service</FieldLabel>
               <Select
@@ -99,7 +99,7 @@ export default function Logs() {
               <Select
                 value={logger ?? ""}
                 onValueChange={(value) => {
-                  setLogger(value || null)
+                  setService(value || null)
                 }}
               >
                 <SelectTrigger className="w-full max-w-48">
@@ -107,7 +107,6 @@ export default function Logs() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem key="" value="">All</SelectItem>
                     {loggers?.result?.length ? (
                       loggers.result.map((logger) => (
                         <SelectItem
@@ -119,7 +118,7 @@ export default function Logs() {
                       ))
                     ) : (
                       <div className="px-2 py-1 text-sm text-muted-foreground">
-                        Select a service first
+                        No logger found
                       </div>
                     )}
                   </SelectGroup>
