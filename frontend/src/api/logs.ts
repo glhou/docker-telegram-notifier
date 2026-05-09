@@ -5,12 +5,14 @@ export interface Log {
   service: string
   level: LogLevel
   message: string
+  logger: string
 }
 
 type LogsResponse = MessageOutput<Log[]>
 
 export interface LogFilter {
   service: string | null
+  logger: string | null
   level: LogLevel | null
   limit: number | null
   offset: number | null
@@ -35,5 +37,13 @@ type ServicesResponse = MessageOutput<string[]>
 export async function fetchServices(): Promise<ServicesResponse> {
   const res = await fetch("/api/log/services")
   if (!res.ok) throw new Error("Failed to fetch services")
+  return res.json()
+}
+
+type LoggersResponse = MessageOutput<string[]>
+
+export async function fetchLoggers(service: string): Promise<LoggersResponse> {
+  const res = await fetch(`/api/log/services/${service}/loggers`)
+  if (!res.ok) throw new Error("Failed to fetch loggers")
   return res.json()
 }

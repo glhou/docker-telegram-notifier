@@ -8,3 +8,4 @@ class Log(SQLModel, table=True):
     service: str
     level: LogLevel
     message: str
+    logger: str
